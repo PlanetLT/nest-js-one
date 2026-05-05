@@ -101,16 +101,21 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ## Folder structure
 
-🟢 1. Small Project (Feature-Based – Recommended Start)
-
+```text
 src/
 ├── main.ts
 ├── app.module.ts
 ├── common/
 │   ├── guards/
+│   │   ├── jwt-auth.guard.ts
+│   │   ├── rate-limit.guard.ts
+│   │   ├── rate-limit.constants.ts
+│   │   └── user.guard.ts
 │   ├── filters/
+│   │   └── api-exception.filter.ts
 │   ├── interceptors/
 │   └── decorators/
+│       └── skip-rate-limit.decorator.ts
 ├── prisma/
 │   ├── prisma.service.ts
 │   └── prisma.module.ts
@@ -118,62 +123,14 @@ src/
 │   ├── auth.controller.ts
 │   ├── auth.service.ts
 │   ├── auth.module.ts
+│   ├── auth.constants.ts
 │   ├── dto/
-│   └── strategies/
-├── user/
-│   ├── user.controller.ts
-│   ├── user.service.ts
-│   ├── user.module.ts
-│   └── dto/
-
-
-
-🟡 2. Medium Project (Domain + Layer Split)
-
-src/
-├── modules/
-│   ├── auth/
-│   ├── user/
-│   └── order/
-├── database/
-│   ├── prisma.service.ts
-│   └── migrations/
-├── common/
-│   ├── guards/
-│   ├── pipes/
-│   └── utils/
-├── config/
-├── main.ts
-
-Inside a module:
-auth/
-├── controllers/
-├── services/
-├── dto/
-├── entities/
-├── strategies/
-├── guards/
-├── auth.module.ts
-
-
-🔴 3. Large / Enterprise (Clean Architecture / DDD)
-
-src/
-├── modules/
-│   ├── auth/
-│   │   ├── application/
-│   │   │   ├── use-cases/
-│   │   │   └── dto/
-│   │   ├── domain/
-│   │   │   ├── entities/
-│   │   │   └── repositories/
-│   │   ├── infrastructure/
-│   │   │   ├── prisma/
-│   │   │   └── services/
-│   │   ├── presentation/
-│   │   │   ├── controllers/
-│   │   │   └── guards/
-│   │   └── auth.module.ts
-├── shared/
-├── config/
-├── main.ts
+│   ├── strategies/
+│   │   └── jwt.strategy.ts
+│   └── types/
+└── user/
+    ├── user.controller.ts
+    ├── user.service.ts
+    ├── user.module.ts
+    └── dto/
+```

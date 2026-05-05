@@ -3,12 +3,12 @@ import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { ProfilesModule } from './profiles/profiles.module';
+import { UserModule } from './user/user.module';
 import { PrismaModule } from './prisma/prisma.module';
-import { RateLimitGuard } from './rate-limit/rate-limit.guard';
+import { RateLimitGuard } from './common/guards/rate-limit.guard';
 
 @Module({
-  imports: [PrismaModule, AuthModule, ProfilesModule],
+  imports: [PrismaModule, AuthModule, UserModule],
   controllers: [AppController],
   providers: [
     AppService,

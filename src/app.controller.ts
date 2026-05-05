@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { SkipRateLimit } from './rate-limit/skip-rate-limit.decorator';
+import { SkipRateLimit } from './common/decorators/skip-rate-limit.decorator';
 
 @Controller()
 export class AppController {

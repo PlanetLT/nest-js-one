@@ -13,7 +13,7 @@ const passport_1 = require("@nestjs/passport");
 const auth_controller_1 = require("./auth.controller");
 const auth_constants_1 = require("./auth.constants");
 const auth_service_1 = require("./auth.service");
-const jwt_strategy_1 = require("./jwt.strategy");
+const jwt_strategy_1 = require("./strategies/jwt.strategy");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
