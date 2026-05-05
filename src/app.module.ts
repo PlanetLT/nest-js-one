@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
-import { ProfilesModule } from './profiles/profiles.module';
-import { PrismaModule } from './prisma/prisma.module';
-import { RateLimitGuard } from './rate-limit/rate-limit.guard';
+import { RateLimitGuard } from './common/guards/rate-limit.guard';
+import { PrismaModule } from './database/prisma.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { ProfilesModule } from './modules/profiles/profiles.module';
 
 @Module({
   imports: [PrismaModule, AuthModule, ProfilesModule],

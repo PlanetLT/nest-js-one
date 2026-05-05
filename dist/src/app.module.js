@@ -11,10 +11,10 @@ const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const auth_module_1 = require("./auth/auth.module");
-const profiles_module_1 = require("./profiles/profiles.module");
-const prisma_module_1 = require("./prisma/prisma.module");
-const rate_limit_guard_1 = require("./rate-limit/rate-limit.guard");
+const rate_limit_guard_1 = require("./common/guards/rate-limit.guard");
+const prisma_module_1 = require("./database/prisma.module");
+const auth_module_1 = require("./modules/auth/auth.module");
+const profiles_module_1 = require("./modules/profiles/profiles.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;

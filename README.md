@@ -101,79 +101,45 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ## Folder structure
 
-🟢 1. Small Project (Feature-Based – Recommended Start)
+The project uses a medium-size NestJS structure: domain modules live under `src/modules`, shared infrastructure lives under `src/common`, `src/config`, and `src/database`.
 
-src/
-├── main.ts
-├── app.module.ts
-├── common/
-│   ├── guards/
-│   ├── filters/
-│   ├── interceptors/
-│   └── decorators/
-├── prisma/
-│   ├── prisma.service.ts
-│   └── prisma.module.ts
-├── auth/
-│   ├── auth.controller.ts
-│   ├── auth.service.ts
-│   ├── auth.module.ts
-│   ├── dto/
-│   └── strategies/
-├── user/
-│   ├── user.controller.ts
-│   ├── user.service.ts
-│   ├── user.module.ts
-│   └── dto/
-
-
-
-🟡 2. Medium Project (Domain + Layer Split)
-
+```text
 src/
 ├── modules/
 │   ├── auth/
+│   │   ├── controllers/
+│   │   ├── services/
+│   │   ├── dto/
+│   │   ├── entities/
+│   │   ├── strategies/
+│   │   ├── guards/
+│   │   └── auth.module.ts
+│   ├── profiles/
+│   │   ├── controllers/
+│   │   ├── services/
+│   │   ├── dto/
+│   │   ├── entities/
+│   │   ├── guards/
+│   │   └── profiles.module.ts
 │   ├── user/
 │   └── order/
 ├── database/
+│   ├── prisma.module.ts
 │   ├── prisma.service.ts
 │   └── migrations/
 ├── common/
+│   ├── decorators/
+│   ├── filters/
 │   ├── guards/
 │   ├── pipes/
+│   ├── types/
 │   └── utils/
 ├── config/
+│   └── auth.config.ts
+├── app.controller.ts
+├── app.module.ts
+├── app.service.ts
 ├── main.ts
+```
 
-Inside a module:
-auth/
-├── controllers/
-├── services/
-├── dto/
-├── entities/
-├── strategies/
-├── guards/
-├── auth.module.ts
-
-
-🔴 3. Large / Enterprise (Clean Architecture / DDD)
-
-src/
-├── modules/
-│   ├── auth/
-│   │   ├── application/
-│   │   │   ├── use-cases/
-│   │   │   └── dto/
-│   │   ├── domain/
-│   │   │   ├── entities/
-│   │   │   └── repositories/
-│   │   ├── infrastructure/
-│   │   │   ├── prisma/
-│   │   │   └── services/
-│   │   ├── presentation/
-│   │   │   ├── controllers/
-│   │   │   └── guards/
-│   │   └── auth.module.ts
-├── shared/
-├── config/
-├── main.ts
+Prisma schema and generated migration files remain in the root `prisma/` directory because Prisma CLI expects that location from `prisma.config.ts`.
