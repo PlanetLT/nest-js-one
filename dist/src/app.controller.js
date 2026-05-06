@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
-const skip_rate_limit_decorator_1 = require("./rate-limit/skip-rate-limit.decorator");
+const skip_rate_limit_decorator_1 = require("./shared/decorators/skip-rate-limit.decorator");
 let AppController = class AppController {
     appService;
     constructor(appService) {

@@ -4,7 +4,7 @@ require("dotenv/config");
 const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const common_1 = require("@nestjs/common");
-const api_exception_filter_1 = require("./common/filters/api-exception.filter");
+const api_exception_filter_1 = require("./shared/filters/api-exception.filter");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useGlobalFilters(new api_exception_filter_1.ApiExceptionFilter());

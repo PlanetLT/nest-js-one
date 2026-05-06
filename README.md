@@ -101,63 +101,9 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ## Folder structure
 
-🟢 1. Small Project (Feature-Based – Recommended Start)
+The project uses a Clean Architecture / DDD-inspired NestJS layout.
 
-src/
-├── main.ts
-├── app.module.ts
-├── common/
-│   ├── guards/
-│   ├── filters/
-│   ├── interceptors/
-│   └── decorators/
-├── prisma/
-│   ├── prisma.service.ts
-│   └── prisma.module.ts
-├── auth/
-│   ├── auth.controller.ts
-│   ├── auth.service.ts
-│   ├── auth.module.ts
-│   ├── dto/
-│   └── strategies/
-├── user/
-│   ├── user.controller.ts
-│   ├── user.service.ts
-│   ├── user.module.ts
-│   └── dto/
-
-
-
-🟡 2. Medium Project (Domain + Layer Split)
-
-src/
-├── modules/
-│   ├── auth/
-│   ├── user/
-│   └── order/
-├── database/
-│   ├── prisma.service.ts
-│   └── migrations/
-├── common/
-│   ├── guards/
-│   ├── pipes/
-│   └── utils/
-├── config/
-├── main.ts
-
-Inside a module:
-auth/
-├── controllers/
-├── services/
-├── dto/
-├── entities/
-├── strategies/
-├── guards/
-├── auth.module.ts
-
-
-🔴 3. Large / Enterprise (Clean Architecture / DDD)
-
+```text
 src/
 ├── modules/
 │   ├── auth/
@@ -172,8 +118,34 @@ src/
 │   │   │   └── services/
 │   │   ├── presentation/
 │   │   │   ├── controllers/
-│   │   │   └── guards/
+│   │   │   ├── guards/
+│   │   │   └── strategies/
 │   │   └── auth.module.ts
+│   └── profiles/
+│       ├── application/
+│       │   └── dto/
+│       ├── domain/
+│       │   └── entities/
+│       ├── infrastructure/
+│       │   └── services/
+│       ├── presentation/
+│       │   ├── controllers/
+│       │   └── guards/
+│       └── profiles.module.ts
 ├── shared/
+│   ├── database/
+│   ├── decorators/
+│   ├── filters/
+│   ├── guards/
+│   ├── pipes/
+│   ├── types/
+│   └── utils/
 ├── config/
+│   └── auth.config.ts
+├── app.controller.ts
+├── app.module.ts
+├── app.service.ts
 ├── main.ts
+```
+
+Prisma schema and generated migration files remain in the root `prisma/` directory because `prisma.config.ts` points Prisma CLI there.
